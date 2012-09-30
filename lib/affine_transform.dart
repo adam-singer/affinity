@@ -20,7 +20,7 @@
  *  [ m10 m11 m12 ]    or     [ shearY scaleY translateY ]
  *  [ 0   0   1   ]           [ 0      0      1          ]
  */
-class AffineTransform implements Hashable { 
+class AffineTransform { 
   
   num m00, m01, m10, m11, m02, m12;
   
