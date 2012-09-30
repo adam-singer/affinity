@@ -1,4 +1,4 @@
 affinity
 ========
 
-A bag of geometric goodies for Dart.
+A bag of geometric primitives for [dart](http://www.dartlang.org/)
