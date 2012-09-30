@@ -1,0 +1,4 @@
+name: affinity
+description: a bag of geometric primitives for dart
+dependencies:
+  unittest: { sdk: unittest }
