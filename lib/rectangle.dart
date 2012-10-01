@@ -134,6 +134,28 @@ class Rectangle {
     return true;
   }
   
+  /**
+   * Rounds in place the [left], [top], [right] and [bottom] of this [Rectangle]
+   * to the nearest integer values.
+   */
+  void round() => roundTo(this);
+  
+  /**
+   * Rounds the [left], [top], [right] and [bottom] of this [Rectangle]
+   * to the nearest integer values and writes the rounded values to [result].
+   */
+  void roundTo(Rectangle result) {
+    // we calculate right and bottom first and store the values
+    final r = right.round();
+    final b = bottom.round();
+    // then we can set the rounded left and top on the result
+    result.left = left.round();
+    result.top = top.round();
+    // finally we can set the right / bottom and width / height will be correct
+    result.right = r;
+    result.bottom = b;
+  }
+  
   String toString() => "rectangle($left,$top,$width,$height)";
   
   /**
