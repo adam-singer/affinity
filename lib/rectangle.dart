@@ -4,7 +4,7 @@
  * 
  * Rectangles are endpoint-exclusive. The following reasoning for this is 
  * derived from [Raymond Chen's blog 'The Old New Thing']
- * (http://blogs.msdn.com/b/oldnewthing/archive/2004/02/18/75652.aspx)
+ * (http://blogs.msdn.com/b/oldnewthing/archive/2004/02/18/75652.aspx).
  * 
  * Endpoint-exclusive rectangles are much easier to work with.
  * 
@@ -65,8 +65,16 @@ class Rectangle {
     a.intersectTo(b, result);
     return result;
   }
-  
-  // TODO: factory constructor for union / uniteTo method
+
+  /**
+   * Constructs a new [Rectangle] representing the union of the given
+   * [Rectangle]s [a] and [b].
+   */
+  factory Rectangle.union(Rectangle a, Rectangle b) {
+    final result = new Rectangle.empty();
+    a.uniteTo(b, result);
+    return result;
+  }
   
   bool operator ==(Object other) {
     if(this === other) return true;
@@ -126,6 +134,8 @@ class Rectangle {
     return true;
   }
   
+  String toString() => "rectangle($left,$top,$width,$height)";
+  
   /**
    * Translates this [Rectangle] the given [offsetX] along the positive x-axis
    * and the given [offsetY] along the positive y-axis.
@@ -135,5 +145,14 @@ class Rectangle {
     top += offsetY;
   }
   
-  String toString() => "rectangle($left,$top,$width,$height)";
+  /**
+   * Performs a union between this [Rectangle] and the [other] and writes
+   * it out to the [result].
+   */
+  void uniteTo(Rectangle other, Rectangle result) {
+    result.left = (left < other.left) ? left : other.left;
+    result.top = (top < other.top ) ? top : other.top;
+    result.right = (right > other.right) ? right : other.right;
+    result.bottom = (bottom > other.bottom) ? bottom : other.bottom;
+  }
 }

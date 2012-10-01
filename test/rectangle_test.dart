@@ -18,6 +18,8 @@ void testRectangle() {
     test('testRectangleIsEmpty', testRectangleIsEmpty);
     test('testRectangleEmptyConstructor', testRectangleEmptyConstructor);
     test('testRectangleTranslate', testRectangleTranslate);
+    test('testRectangleUniteTo', testRectangleUniteTo);
+    test('testRectangleUnionConstructor', testRectangleUnionConstructor);
     test('testRectangleEquals', testRectangleEquals);
     test('testRectangleToString', testRectangleToString);
   });
@@ -168,6 +170,31 @@ void testRectangleTranslate() {
   expect(r.top, closeTo(5.14, tolerance));
   expect(r.bottom, closeTo(9.14, tolerance));
   expect(r.height, closeTo(4, tolerance)); 
+}
+
+void testRectangleUniteTo() {
+  var r1 = new Rectangle(10, 10, 10, 10);
+  var r2 = new Rectangle(20, 20, 10, 10);
+  var result = new Rectangle.empty();
+  r1.uniteTo(r2, result);
+  expect(result.left, equals(10));
+  expect(result.top, equals(10));
+  expect(result.right, equals(30));
+  expect(result.bottom, equals(30));
+  expect(result.width, equals(20));
+  expect(result.height, equals(20));
+}
+
+void testRectangleUnionConstructor() {
+  var r1 = new Rectangle(10, 10, 10, 10);
+  var r2 = new Rectangle(20, 15.5, 10, 14.5);
+  var result = new Rectangle.union(r1, r2);
+  expect(result.left, equals(10));
+  expect(result.top, equals(10));
+  expect(result.right, equals(30));
+  expect(result.bottom, equals(30));
+  expect(result.width, equals(20));
+  expect(result.height, equals(20));
 }
 
 void testRectangleEquals() {
