@@ -2,11 +2,9 @@
 /**
  * A representation of a [Rectangle].
  * 
- * Rectangles are endpoint-exclusive. The following reasoning for this is 
- * derived from [Raymond Chen's blog 'The Old New Thing']
+ * Rectangles are endpoint-exclusive.  Endpoint-exclusive rectangles are much 
+ * easier to work with, as explained by [Raymond Chen]
  * (http://blogs.msdn.com/b/oldnewthing/archive/2004/02/18/75652.aspx).
- * 
- * Endpoint-exclusive rectangles are much easier to work with.
  * 
  * For example, the width of a rectangle is (right - left).  If rectangles
  * were endpoint-inclusive, then the width would be (right - left + 1).
