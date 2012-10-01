@@ -3,9 +3,8 @@
  * A representation of a [Rectangle].
  * 
  * Rectangles are endpoint-exclusive. The following reasoning for this is 
- * derived from Raymond Chen's blog 'The Old New Thing':
- * 
- * http://blogs.msdn.com/b/oldnewthing/archive/2004/02/18/75652.aspx
+ * derived from [Raymond Chen's blog 'The Old New Thing']
+ * (http://blogs.msdn.com/b/oldnewthing/archive/2004/02/18/75652.aspx)
  * 
  * Endpoint-exclusive rectangles are much easier to work with.
  * 
@@ -34,6 +33,12 @@ class Rectangle {
   /// Gets or sets the height of this [Rectangle].
   num height;
   
+  /**
+   * Gets whether this [Rectangle] is empty.  An empty [Rectangle] has [width]
+   * and [height] equal to zero.
+   */
+  bool get isEmpty => width == 0 && height == 0;
+  
   /// Gets or sets the x-coordinate of this [Rectangle]'s right edge.
   num get right => left + width;
       set right(num value) { width = value - left; }
@@ -48,7 +53,20 @@ class Rectangle {
    */
   Rectangle(this.left, this.top, this.width, this.height);
   
-  // TODO: factory constructors for Intersection / Union
+  /// Constructs a new empty [Rectangle].
+  Rectangle.empty() : this(0, 0, 0, 0);
+  
+  /**
+   * Constructs a new [Rectangle] representing the intersection of the
+   * given [Rectangle]s [a] and [b].
+   */
+  factory Rectangle.intersection(Rectangle a, Rectangle b) {
+    final result = new Rectangle.empty();
+    a.intersectTo(b, result);
+    return result;
+  }
+  
+  // TODO: factory constructor for union / uniteTo method
   
   bool operator ==(Object other) {
     if(this === other) return true;
@@ -89,7 +107,25 @@ class Rectangle {
   bool intersects(Rectangle other) => 
       (right > other.left) && (left < other.right) && 
       (bottom > other.top) && (top < other.bottom);    
-      
+  
+  /**
+   * Performs an intersection between this [Rectangle] and the [other] and
+   * writes it out to the [result].  If there is no intersection, an [empty]
+   * [Rectangle] is written to [result].  Returns [:true:] if there is an
+   * intersection, else returns [:false:].
+   */
+  bool intersectTo(Rectangle other, Rectangle result) {
+    if(!intersects(other)) {
+      result.left = result.top = result.width = result.height = 0;
+      return false;
+    }
+    result.left = (left > other.left) ? left : other.left;
+    result.top = (top > other.top ) ? top : other.top;
+    result.right = (right < other.right) ? right : other.right;
+    result.bottom = (bottom < other.bottom) ? bottom : other.bottom;
+    return true;
+  }
+  
   /**
    * Translates this [Rectangle] the given [offsetX] along the positive x-axis
    * and the given [offsetY] along the positive y-axis.
