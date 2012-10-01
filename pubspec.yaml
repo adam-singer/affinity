@@ -1,4 +1,6 @@
 name: affinity
 description: a set of geometric primitives for dart
+author: Ross Smith
+homepage: https://github.com/rmsmith/affinity
 dependencies:
   unittest: { sdk: unittest }
