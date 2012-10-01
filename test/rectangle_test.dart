@@ -19,6 +19,7 @@ void testRectangle() {
     test('testRectangleEmptyConstructor', testRectangleEmptyConstructor);
     test('testRectangleRound', testRectangleRound);
     test('testRectangleRoundTo', testRectangleRoundTo);
+    test('testRectangleRoundedConstructor', testRectangleRoundedConstructor);
     test('testRectangleTranslate', testRectangleTranslate);
     test('testRectangleUniteTo', testRectangleUniteTo);
     test('testRectangleUnionConstructor', testRectangleUnionConstructor);
@@ -178,6 +179,29 @@ void testRectangleRoundTo() {
   var r = new Rectangle(1.2, 1.2, 2.4, 2.2);
   var result = new Rectangle.empty();
   r.roundTo(result);
+  expect(r.left, equals(1.2));
+  expect(r.top, equals(1.2));
+  expect(r.right, closeTo(3.6, tolerance));
+  expect(r.bottom, closeTo(3.4, tolerance));
+  expect(r.width, equals(2.4));
+  expect(r.height, equals(2.2));
+  expect(result.left, equals(1));
+  expect(result.top, equals(1));
+  expect(result.right, equals(4));
+  expect(result.bottom, equals(3));
+  expect(result.width, equals(3));
+  expect(result.height, equals(2));
+}
+
+void testRectangleRoundedConstructor() {
+  var r = new Rectangle(1.2, 1.2, 2.4, 2.2);
+  var result = new Rectangle.rounded(r);
+  expect(r.left, equals(1.2));
+  expect(r.top, equals(1.2));
+  expect(r.right, closeTo(3.6, tolerance));
+  expect(r.bottom, closeTo(3.4, tolerance));
+  expect(r.width, equals(2.4));
+  expect(r.height, equals(2.2));
   expect(result.left, equals(1));
   expect(result.top, equals(1));
   expect(result.right, equals(4));

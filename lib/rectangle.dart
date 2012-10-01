@@ -65,6 +65,16 @@ class Rectangle {
     a.intersectTo(b, result);
     return result;
   }
+  
+  /**
+   * Constructs a new [Rectangle] whose [left], [top], [right] and [bottom] 
+   * are set to the nearest integer values of the given [other].
+   */
+  factory Rectangle.rounded(Rectangle other) {
+    final result = new Rectangle.empty();
+    other.roundTo(result);
+    return result;
+  }
 
   /**
    * Constructs a new [Rectangle] representing the union of the given
