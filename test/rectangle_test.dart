@@ -12,7 +12,8 @@ void testRectangle() {
     test('testRectanglesLeftRightTouchingDoNotIntersect', testRectanglesLeftRightTouchingDoNotIntersect);
     test('testRectanglesTopBottomTouchingDoNotIntersect', testRectanglesTopBottomTouchingDoNotIntersect);
     test('testRectanglesIntersectToEmpty', testRectanglesIntersectToEmpty);
-    test('testRectanglesIntersectToOnePixel', testRectanglesIntersectToOnePixel);
+    test('testRectanglesIntersectTo', testRectanglesIntersectTo);
+    test('testRectanglesIntersect', testRectanglesIntersect);
     test('testRectangleIntersectionConstructor', testRectangleIntersectionConstructor);
     test('testRectangleInflate', testRectangleInflate);
     test('testRectangleIsEmpty', testRectangleIsEmpty);
@@ -22,6 +23,7 @@ void testRectangle() {
     test('testRectangleRoundedConstructor', testRectangleRoundedConstructor);
     test('testRectangleTranslate', testRectangleTranslate);
     test('testRectangleUniteTo', testRectangleUniteTo);
+    test('testRectangleUnite', testRectangleUnite);
     test('testRectangleUnionConstructor', testRectangleUnionConstructor);
     test('testRectangleEquals', testRectangleEquals);
     test('testRectangleToString', testRectangleToString);
@@ -106,7 +108,7 @@ void testRectanglesIntersectToEmpty() {
   expect(result.isEmpty);
 }
 
-void testRectanglesIntersectToOnePixel() {
+void testRectanglesIntersectTo() {
   var r1 = new Rectangle(0, 0, 9, 9);
   var r2 = new Rectangle(8, 8, 100, 100);
   var result = new Rectangle.empty();
@@ -117,6 +119,36 @@ void testRectanglesIntersectToOnePixel() {
   expect(result.bottom, equals(9));
   expect(result.width, equals(1));
   expect(result.height, equals(1));
+  expect(r1.left, equals(0));
+  expect(r1.top, equals(0));
+  expect(r1.right, equals(9));
+  expect(r1.bottom, equals(9));
+  expect(r1.width, equals(9));
+  expect(r1.height, equals(9));
+  expect(r2.left, equals(8));
+  expect(r2.top, equals(8));
+  expect(r2.right, equals(108));
+  expect(r2.bottom, equals(108));
+  expect(r2.width, equals(100));
+  expect(r2.height, equals(100));
+}
+
+void testRectanglesIntersect() {
+  var r1 = new Rectangle(0, 0, 9, 9);
+  var r2 = new Rectangle(8, 8, 100, 100);
+  expect(r1.intersect(r2), isTrue);
+  expect(r1.left, equals(8));
+  expect(r1.top, equals(8));
+  expect(r1.right, equals(9));
+  expect(r1.bottom, equals(9));
+  expect(r1.width, equals(1));
+  expect(r1.height, equals(1));
+  expect(r2.left, equals(8));
+  expect(r2.top, equals(8));
+  expect(r2.right, equals(108));
+  expect(r2.bottom, equals(108));
+  expect(r2.width, equals(100));
+  expect(r2.height, equals(100));
 }
 
 void testRectangleIntersectionConstructor() {
@@ -232,6 +264,36 @@ void testRectangleUniteTo() {
   expect(result.bottom, equals(30));
   expect(result.width, equals(20));
   expect(result.height, equals(20));
+  expect(r1.left, equals(10));
+  expect(r1.top, equals(10));
+  expect(r1.right, equals(20));
+  expect(r1.bottom, equals(20));
+  expect(r1.width, equals(10));
+  expect(r1.height, equals(10));
+  expect(r2.left, equals(20));
+  expect(r2.top, equals(20));
+  expect(r2.right, equals(30));
+  expect(r2.bottom, equals(30));
+  expect(r2.width, equals(10));
+  expect(r2.height, equals(10));
+}
+
+void testRectangleUnite() {
+  var r1 = new Rectangle(10, 10, 10, 10);
+  var r2 = new Rectangle(20, 20, 10, 10);
+  r1.unite(r2);
+  expect(r1.left, equals(10));
+  expect(r1.top, equals(10));
+  expect(r1.right, equals(30));
+  expect(r1.bottom, equals(30));
+  expect(r1.width, equals(20));
+  expect(r1.height, equals(20));
+  expect(r2.left, equals(20));
+  expect(r2.top, equals(20));
+  expect(r2.right, equals(30));
+  expect(r2.bottom, equals(30));
+  expect(r2.width, equals(10));
+  expect(r2.height, equals(10));
 }
 
 void testRectangleUnionConstructor() {

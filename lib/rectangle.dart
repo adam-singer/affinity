@@ -125,6 +125,13 @@ class Rectangle {
       (bottom > other.top) && (top < other.bottom);    
   
   /**
+   * Performs an in place intersection between this [Rectangle] and the [other].
+   * If there is no intersection, and [empty] [Rectangle] is written.  Returns
+   * [:true:] if there is an intersection, else returns [:false:].
+   */
+  bool intersect(Rectangle other) => intersectTo(other, this); 
+  
+  /**
    * Performs an intersection between this [Rectangle] and the [other] and
    * writes it out to the [result].  If there is no intersection, an [empty]
    * [Rectangle] is written to [result].  Returns [:true:] if there is an
@@ -135,10 +142,15 @@ class Rectangle {
       result.left = result.top = result.width = result.height = 0;
       return false;
     }
+    // store the (calculated) right/bottom values before we change left/top
+    final r = right;
+    final b = bottom;
+    final or = other.right;
+    final ob = other.bottom;
     result.left = (left > other.left) ? left : other.left;
-    result.top = (top > other.top ) ? top : other.top;
-    result.right = (right < other.right) ? right : other.right;
-    result.bottom = (bottom < other.bottom) ? bottom : other.bottom;
+    result.top = (top > other.top ) ? top : other.top;    
+    result.right = (r < or) ? r : or;
+    result.bottom = (b < ob) ? b : ob;
     return true;
   }
   
@@ -175,14 +187,22 @@ class Rectangle {
     top += offsetY;
   }
   
+  /// Performs an in place union between this [Rectangle] and the [other].
+  void unite(Rectangle other) => uniteTo(other, this);
+  
   /**
    * Performs a union between this [Rectangle] and the [other] and writes
    * it out to the [result].
    */
   void uniteTo(Rectangle other, Rectangle result) {
+    // store the (calculated) right/bottom values before we change left/top
+    final r = right;
+    final b = bottom;
+    final or = other.right;
+    final ob = other.bottom;
     result.left = (left < other.left) ? left : other.left;
     result.top = (top < other.top ) ? top : other.top;
-    result.right = (right > other.right) ? right : other.right;
-    result.bottom = (bottom > other.bottom) ? bottom : other.bottom;
+    result.right = (r > or) ? r : or;
+    result.bottom = (b > ob) ? b : ob;
   }
 }
