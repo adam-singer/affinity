@@ -5,3 +5,4 @@ import 'dart:math';
 
 part 'affine_transform.dart';
 part 'rectangle.dart';
+part 'vector.dart';
