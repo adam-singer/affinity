@@ -44,6 +44,15 @@ class Vector2 {
   }
   
   /**
+   * Performs a linear interpolation between this [Vector2] and the [other] and
+   * writes the result to this vector.  The given [amount] must be a value
+   * between [:0:] and [:1:] that indicates the weight of [other]; [:0:] will
+   * cause [this] to be unchanged, and [:1:] will cause [other] to be written
+   * to [this].
+   */
+  void lerp(Vector2 other, num amount) => lerpTo(other, amount, this);
+  
+  /**
    * Performs a linear interpolation between [this] [Vector2] and the [other].
    * The given [amount] must be a value between [:0:] and [:1:] that indicates
    * the weight of [other]; [:0:] will cause [this] to be written to [result],
