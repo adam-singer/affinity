@@ -37,6 +37,7 @@ void testCopyConstructor() {
   expect(from.m11, equals(to.m11));
   expect(from.m02, equals(to.m02));
   expect(from.m12, equals(to.m12));
+  expect(identical(from, to), isFalse);
 }
 
 void testIdentityConstructor() {

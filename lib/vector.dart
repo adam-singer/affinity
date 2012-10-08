@@ -19,6 +19,9 @@ class Vector2 {
   /// Constructs a new [Vector2] with the given [x] and [y] components.
   Vector2(this.x, this.y);
   
+  /// Constructs a new [Vector2] that is a copy of the given [other].
+  Vector2.copy(Vector2 other) : this(other.x, other.y);
+  
   /// Constructs a new [Vector2] that is the difference of [a] and [b].
   Vector2.difference(Vector2 a, Vector2 b) : this(a.x - b.x, a.y - b.y);
   

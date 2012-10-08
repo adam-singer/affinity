@@ -1,6 +1,7 @@
 
 void testRectangle() {  
   group('testRectangle', () {    
+    test('testRectangleCopyConstructor', testRectangleCopyConstructor); 
     test('testRectangleContainsItself', testRectangleContainsItself);    
     test('testRectangleIntersectsItself', testRectangleIntersectsItself);    
     test('testRectangleWithOnePixelLessHeightDoesNotContain', testRectangleWithOnePixelLessHeightDoesNotContain);  
@@ -28,6 +29,16 @@ void testRectangle() {
     test('testRectangleEquals', testRectangleEquals);
     test('testRectangleToString', testRectangleToString);
   });
+}
+
+void testRectangleCopyConstructor() {
+  var from = new Rectangle(1, 2, 3, 4);
+  var to = new Rectangle.copy(from);
+  expect(from.left, equals(to.left));
+  expect(from.top, equals(to.top));
+  expect(from.width, equals(to.width));
+  expect(from.height, equals(to.height));
+  expect(identical(from, to), isFalse);
 }
 
 void testRectangleContainsItself() {

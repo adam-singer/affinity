@@ -1,6 +1,7 @@
 
 void testVector2() {  
-  group('testVector2', () {        
+  group('testVector2', () {     
+    test('testVector2CopyConstructor', testVector2CopyConstructor);
     test('testVector2AddTo', testVector2AddTo);
     test('testVector2Add', testVector2Add);
     test('testVector2SumConstructor', testVector2SumConstructor);
@@ -18,6 +19,14 @@ void testVector2() {
     test('testVector2Equals', testVector2Equals);
     test('testVector2ToString', testVector2ToString);
   });
+}
+
+void testVector2CopyConstructor() {
+  var from = new Vector2(1, 2);
+  var to = new Vector2.copy(from);
+  expect(from.x, equals(to.x));
+  expect(from.y, equals(to.y));
+  expect(identical(from, to), isFalse);
 }
 
 void testVector2AddTo() {

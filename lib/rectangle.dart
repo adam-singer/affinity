@@ -51,6 +51,10 @@ class Rectangle {
    */
   Rectangle(this.left, this.top, this.width, this.height);
   
+  /// Constructs a new [Rectangle] that is a copy of the given [other].
+  Rectangle.copy(Rectangle other) 
+      : this(other.left, other.top, other.width, other.height);
+  
   /// Constructs a new empty [Rectangle].
   Rectangle.empty() : this(0, 0, 0, 0);
   
