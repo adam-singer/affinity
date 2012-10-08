@@ -32,10 +32,10 @@ class Vector2 {
   /// Constructs a new [Vector2] that is the sum of the given [a] and [b].
   Vector2.sum(Vector2 a, Vector2 b) : this(a.x + b.x, a.y + b.y);
   
-  /// TODO:
+  /// Constructs a new [Vector2] that is the unit vector for the x-axis.
   factory Vector2.unitX() => new Vector2(1, 0);  
   
-  /// TODO:
+  /// Constructs a new [Vector2] that is the unit vector for the y-axis.
   factory Vector2.unitY() => new Vector2(0, 1);
   
   bool operator ==(Object other) {
