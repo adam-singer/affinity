@@ -16,7 +16,7 @@ class Vector2 {
   /// Calculates the length of the vector squared.
   num get lengthSquared => x * x + y * y;
   
-  /// TODO:
+  /// Constructs a new [Vector2] with the given [x] and [y] components.
   Vector2(this.x, this.y);
   
   /// Constructs a new [Vector2] that is the difference of [a] and [b].
