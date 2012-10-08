@@ -81,7 +81,7 @@ class AffineTransform {
   AffineTransform(this.m00, this.m10, this.m01, this.m11, this.m02, this.m12);  
   
   /// Constructs a new [AffineTransform] that is a copy of the given [other].
-  AffineTransform.copyOf(AffineTransform other) 
+  AffineTransform.copy(AffineTransform other) 
       : this(other.m00, other.m10, other.m01, other.m11, other.m02, other.m12);
   
   /// Constructs a new [AffineTransform] that is the identity transform.
@@ -91,7 +91,7 @@ class AffineTransform {
    * Constructs a new [AffineTransform] representing the inverse transformation
    * of the given [other] transform.
    */
-  factory AffineTransform.inverseOf(AffineTransform other) {
+  factory AffineTransform.inverse(AffineTransform other) {
     final inverse = new AffineTransform.identity();
     other.invertTo(inverse);
     return inverse;

@@ -1,9 +1,9 @@
 
 void testAffineTransform() {  
   group('testAffineTransform', () {      
-    test('testCopyOfConstructor', testCopyOfConstructor);
+    test('testCopyConstructor', testCopyConstructor);
     test('testIdentityConstructor', testIdentityConstructor);
-    test('testInverseOfConstructor', testInverseOfConstructor);
+    test('testInverseConstructor', testInverseConstructor);
     test('testRotationConstructor', testRotationConstructor);
     test('testRotationAnchorConstructor', testRotationAnchorConstructor);
     test('testScalingConstructor', testScalingConstructor);
@@ -28,9 +28,9 @@ void testAffineTransform() {
   });
 }
 
-void testCopyOfConstructor() {
+void testCopyConstructor() {
   var from = new AffineTransform(1, 2, 3, 4, 5, 6);
-  var to = new AffineTransform.copyOf(from);
+  var to = new AffineTransform.copy(from);
   expect(from.m00, equals(to.m00));
   expect(from.m10, equals(to.m10));
   expect(from.m01, equals(to.m01));
@@ -49,10 +49,10 @@ void testIdentityConstructor() {
   expect(tx.m12, equals(0));
 }
 
-void testInverseOfConstructor() {
+void testInverseConstructor() {
   var tx = new AffineTransform.scaling(2, 3)
       ..translate(5, 10)..rotateAnchor(PI / 4, 5, 10);
-  var iv = new AffineTransform.inverseOf(tx);
+  var iv = new AffineTransform.inverse(tx);
   expect(iv.m00, closeTo(0.353553390, tolerance));  
   expect(iv.m10, closeTo(-0.353553390, tolerance));  
   expect(iv.m01, closeTo(0.235702260, tolerance));
