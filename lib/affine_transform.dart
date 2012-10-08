@@ -177,8 +177,7 @@ class AffineTransform {
    * 
    *    [result] = [this] + ([amount] * ([other] - [this]))
    */
-  void lerpTo(AffineTransform other, num amount, AffineTransform result)
-  {
+  void lerpTo(AffineTransform other, num amount, AffineTransform result) {
     assert(amount >= 0 && amount <= 1);
     result.m00 = m00 + (amount * (other.m00 - m00));
     result.m10 = m10 + (amount * (other.m10 - m10));
