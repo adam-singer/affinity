@@ -19,11 +19,8 @@ class Vector2 {
   /// TODO:
   Vector2(this.x, this.y);
   
-  /// TODO:
-  factory Vector2.unitX() => new Vector2(1, 0);  
-  
-  /// TODO:
-  factory Vector2.unitY() => new Vector2(0, 1);
+  /// Constructs a new [Vector2] that is the difference of [a] and [b].
+  Vector2.difference(Vector2 a, Vector2 b) : this(a.x - b.x, a.y - b.y);
   
   /// Constructs a new [Vector2] that is the normal of the given [other].
   factory Vector2.normal(Vector2 other) {
@@ -34,6 +31,12 @@ class Vector2 {
   
   /// Constructs a new [Vector2] that is the sum of the given [a] and [b].
   Vector2.sum(Vector2 a, Vector2 b) : this(a.x + b.x, a.y + b.y);
+  
+  /// TODO:
+  factory Vector2.unitX() => new Vector2(1, 0);  
+  
+  /// TODO:
+  factory Vector2.unitY() => new Vector2(0, 1);
   
   bool operator ==(Object other) {
     if(this === other) return true;
@@ -96,6 +99,15 @@ class Vector2 {
     assert(len > 0);    
     result.x = x/len;
     result.y = y/len;
+  }
+  
+  /// Subtracts in place the given [other] vector from [this] vector.
+  void subtract(Vector2 other) => subtractTo(other, this);
+  
+  /// Subtracts the [other] vector from this vector and writes to [result].
+  void subtractTo(Vector2 other, Vector2 result) {
+    result.x = x - other.x;
+    result.y = y - other.y;
   }
   
   String toString() => "vector2($x,$y)";

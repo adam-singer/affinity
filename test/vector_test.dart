@@ -11,6 +11,9 @@ void testVector2() {
     test('testVector2NormalizeTo', testVector2NormalizeTo);
     test('testVector2Normalize', testVector2Normalize);
     test('testVector2NormalConstructor', testVector2NormalConstructor);
+    test('testVector2SubtractTo', testVector2SubtractTo);
+    test('testVector2Subtract', testVector2Subtract);
+    test('testVector2DifferenceConstructor', testVector2DifferenceConstructor);
     test('testVector2Equals', testVector2Equals);
     test('testVector2ToString', testVector2ToString);
   });
@@ -135,6 +138,43 @@ void testVector2NormalConstructor() {
   expect(result.y, closeTo(sqrt(0.5), tolerance));
   expect(v.x, equals(3.14));
   expect(v.y, equals(3.14));
+}
+
+void testVector2SubtractTo() {
+  var a = new Vector2(1, -1);
+  var b = new Vector2(3, 3);
+  var result = new Vector2(0, 0);
+  a.subtractTo(b, result);
+  expect(result.x, equals(-2));
+  expect(result.y, equals(-4));
+  // verify no side effects to original vectors
+  expect(a.x, equals(1));
+  expect(a.y, equals(-1));
+  expect(b.x, equals(3));
+  expect(b.y, equals(3));
+}
+
+void testVector2Subtract() {
+  var a = new Vector2(1, -1);
+  var b = new Vector2(3, 3);
+  a.subtract(b);
+  expect(a.x, equals(-2));
+  expect(a.y, equals(-4));
+  expect(b.x, equals(3));
+  expect(b.y, equals(3));
+}
+
+void testVector2DifferenceConstructor() {
+  var a = new Vector2(1, -1);
+  var b = new Vector2(3, 3);
+  var result = new Vector2.difference(a, b);
+  expect(result.x, equals(-2));
+  expect(result.y, equals(-4));
+  // verify no side effects to original vectors
+  expect(a.x, equals(1));
+  expect(a.y, equals(-1));
+  expect(b.x, equals(3));
+  expect(b.y, equals(3));
 }
 
 void testVector2Equals() {
