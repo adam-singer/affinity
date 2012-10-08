@@ -1,14 +1,63 @@
 
 void testVector2() {  
-  group('testVector2', () {    
+  group('testVector2', () {        
+    test('testVector2AddTo', testVector2AddTo);
+    test('testVector2Add', testVector2Add);
+    test('testVector2SumConstructor', testVector2SumConstructor);
+    test('testVector2Distance', testVector2Distance);
     test('testVector2Length', testVector2Length);
     test('testVector2LerpTo', testVector2LerpTo);
     test('testVector2Lerp', testVector2Lerp);
     test('testVector2NormalizeTo', testVector2NormalizeTo);
     test('testVector2Normalize', testVector2Normalize);
+    test('testVector2NormalConstructor', testVector2NormalConstructor);
     test('testVector2Equals', testVector2Equals);
     test('testVector2ToString', testVector2ToString);
   });
+}
+
+void testVector2AddTo() {
+  var a = new Vector2(1, -1);
+  var b = new Vector2(3, 3);
+  var result = new Vector2(0, 0);
+  a.addTo(b, result);
+  expect(result.x, equals(4));
+  expect(result.y, equals(2));
+  // verify no side effects to original vectors
+  expect(a.x, equals(1));
+  expect(a.y, equals(-1));
+  expect(b.x, equals(3));
+  expect(b.y, equals(3));
+}
+
+void testVector2Add() {
+  var a = new Vector2(1, -1);
+  var b = new Vector2(3, 3);
+  a.add(b);
+  expect(a.x, equals(4));
+  expect(a.y, equals(2));
+  expect(b.x, equals(3));
+  expect(b.y, equals(3));
+}
+
+void testVector2SumConstructor() {
+  var a = new Vector2(1, -1);
+  var b = new Vector2(3, 3);
+  var result = new Vector2.sum(a, b);
+  expect(result.x, equals(4));
+  expect(result.y, equals(2));
+  // verify no side effects to original vectors
+  expect(a.x, equals(1));
+  expect(a.y, equals(-1));
+  expect(b.x, equals(3));
+  expect(b.y, equals(3));
+}
+
+void testVector2Distance() {
+  var a = new Vector2(3, 4);
+  var b = new Vector2(-3, -4);
+  expect(a.distance(b), equals(10));
+  expect(a.distanceSquared(b), equals(100));
 }
 
 void testVector2Length() {
@@ -76,6 +125,16 @@ void testVector2Normalize() {
   expect(v2.length, closeTo(1.0, tolerance));
   expect(v2.x, closeTo(sqrt(0.2), tolerance));
   expect(v2.y, closeTo(2*sqrt(0.2), tolerance));
+}
+
+void testVector2NormalConstructor() {
+  var v = new Vector2(3.14, 3.14); // y = x
+  var result = new Vector2.normal(v);
+  expect(result.length, closeTo(1.0, tolerance));
+  expect(result.x, closeTo(sqrt(0.5), tolerance));
+  expect(result.y, closeTo(sqrt(0.5), tolerance));
+  expect(v.x, equals(3.14));
+  expect(v.y, equals(3.14));
 }
 
 void testVector2Equals() {

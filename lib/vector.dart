@@ -14,18 +14,26 @@ class Vector2 {
   num get length => sqrt(x * x + y * y);
   
   /// Calculates the length of the vector squared.
-  num get lengthSquared => (x * x + y * y);
+  num get lengthSquared => x * x + y * y;
   
+  /// TODO:
   Vector2(this.x, this.y);
   
+  /// TODO:
   factory Vector2.unitX() => new Vector2(1, 0);  
+  
+  /// TODO:
   factory Vector2.unitY() => new Vector2(0, 1);
   
-  factory Vector2.normalOf(Vector2 other) {    
-    num len = other.length;
-    assert(len > 0);    
-    return new Vector2(other.x/len, other.y/len);
+  /// Constructs a new [Vector2] that is the normal of the given [other].
+  factory Vector2.normal(Vector2 other) {
+    final result = new Vector2(0, 0);
+    other.normalizeTo(result);
+    return result;
   }
+  
+  /// Constructs a new [Vector2] that is the sum of the given [a] and [b].
+  Vector2.sum(Vector2 a, Vector2 b) : this(a.x + b.x, a.y + b.y);
   
   bool operator ==(Object other) {
     if(this === other) return true;
@@ -35,12 +43,27 @@ class Vector2 {
   
   int hashCode() => x.hashCode() ^ y.hashCode();
   
+  /// Adds in place the given [other] vector to [this] vector.
+  void add(Vector2 other) => addTo(other, this);
+  
+  /// Adds the given [other] vector to [this] vector and writes to [result].
+  void addTo(Vector2 other, Vector2 result) {
+    result.x = x + other.x;
+    result.y = y + other.y;
+  }
+  
   /// Calculates the distance between [this] vector and the given [other].
-  num distance(Vector2 other)
-  {
+  num distance(Vector2 other) {
     final dx = x - other.x;
     final dy = y - other.y;
     return sqrt(dx * dx + dy * dy);
+  }
+  
+  /// Calculates the distance between [this] vector and the [other] squared.
+  num distanceSquared(Vector2 other) {
+    final dx = x - other.x;
+    final dy = y - other.y;
+    return dx * dx + dy * dy;
   }
   
   /**
@@ -58,8 +81,7 @@ class Vector2 {
    * the weight of [other]; [:0:] will cause [this] to be written to [result],
    * and [:1:] will cause [other] to be written to [result].
    */
-  void lerpTo(Vector2 other, num amount, Vector2 result)
-  {
+  void lerpTo(Vector2 other, num amount, Vector2 result) {
     assert(amount >= 0 && amount <= 1);
     result.x = x + (amount * (other.x - x));
     result.y = y + (amount * (other.y - y));
