@@ -5,6 +5,7 @@ void testVector2() {
     test('testVector2Add', testVector2Add);
     test('testVector2SumConstructor', testVector2SumConstructor);
     test('testVector2Distance', testVector2Distance);
+    test('testVector2Dot', testVector2Dot);
     test('testVector2Length', testVector2Length);
     test('testVector2LerpTo', testVector2LerpTo);
     test('testVector2Lerp', testVector2Lerp);
@@ -61,6 +62,31 @@ void testVector2Distance() {
   var b = new Vector2(-3, -4);
   expect(a.distance(b), equals(10));
   expect(a.distanceSquared(b), equals(100));
+}
+
+void testVector2Dot() {
+  // if the dot product == 0 the vectors are orthogonal.
+  var a = new Vector2(0, 5);
+  var b = new Vector2(3, 0);
+  expect(a.dot(b), isZero);
+  // if the dot product > 0, the angle between the two vectors is < 90 degrees.
+  a = new Vector2(5, 5);
+  b = new Vector2(0, 7);
+  expect(a.dot(b), equals(35));
+  // if the dot product < 0, the angle between the two vectors is > 90 degrees.
+  a = new Vector2(-5, -5);
+  b = new Vector2(0, 7);
+  expect(a.dot(b), equals(-35));  
+  // if the dot product == 1, the angle between the two vectors is 0 degrees;
+  //   i.e. the vectors point in the same direction and are parallel.
+  a = new Vector2(2, 2)..normalize();
+  b = new Vector2(4, 4)..normalize();
+  expect(a.dot(b), closeTo(1, tolerance));  
+  // if the dot product == -1, the angle between the two vectors is 180 degrees;
+  //   i.e. the vectors point in opposite directions and are parallel.
+  a = new Vector2(2, 2)..normalize();
+  b = new Vector2(-4, -4)..normalize();
+  expect(a.dot(b), closeTo(-1, tolerance));
 }
 
 void testVector2Length() {

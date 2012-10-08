@@ -70,6 +70,22 @@ class Vector2 {
   }
   
   /**
+   * Calculates the dot product of [this] vector and the given [other].
+   * If the two vectors are unit vectors, the dot product will be a number
+   * between [:-1:] and [:1:] that provides the following information about
+   * the two vectors:
+   *  
+   * if the dot product == 0 the vectors are orthogonal.
+   * if the dot product > 0, the angle between the two vectors is < 90 degrees.
+   * if the dot product < 0, the angle between the two vectors is > 90 degrees.
+   * if the dot product == 1, the angle between the two vectors is 0 degrees;
+   *   i.e. the vectors point in the same direction and are parallel.
+   * if the dot product == -1, the angle between the two vectors is 180 degrees;
+   *   i.e. the vectors point in opposite directions and are parallel.
+   */
+  num dot(Vector2 other) => x * other.x + y * other.y;
+  
+  /**
    * Performs a linear interpolation between this [Vector2] and the [other] and
    * writes the result to this vector.  The given [amount] must be a value
    * between [:0:] and [:1:] that indicates the weight of [other]; [:0:] will
