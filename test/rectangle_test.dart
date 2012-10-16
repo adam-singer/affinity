@@ -189,7 +189,6 @@ void testRectangleIsEmpty() {
   var r = new Rectangle(1, 2, 0, 0);
   expect(r.isEmpty);
   r.width = 2;
-  print(r);
   expect(r.isEmpty, isFalse);
   r.width = 0;
   expect(r.isEmpty);

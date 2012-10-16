@@ -1,34 +1,34 @@
 
 void testAffineTransform() {  
   group('testAffineTransform', () {      
-    test('testCopyConstructor', testCopyConstructor);
-    test('testIdentityConstructor', testIdentityConstructor);
-    test('testInverseConstructor', testInverseConstructor);
-    test('testRotationConstructor', testRotationConstructor);
-    test('testRotationAnchorConstructor', testRotationAnchorConstructor);
-    test('testScalingConstructor', testScalingConstructor);
-    test('testShearingConstructor', testShearingConstructor);
-    test('testTranslationConstructor', testTranslationConstructor);
-    test('testSetToIdentity', testSetToIdentity);
-    test('testScaleShearTranslateFactors', testScaleShearTranslateFactors);
-    test('testRotate', testRotate);
-    test('testRotateAnchor', testRotateAnchor);
-    test('testScale', testScale);
-    test('testShear', testShear);
-    test('testTranslate', testTranslate);
-    test('testConcatenate', testConcatenate);
-    test('testPreconcatenate', testPreconcatenate);
-    test('testAssociativeConcatenate', testAssociativeConcatenate);
-    test('testTransform', testTransform);
-    test('testLerpTo', testLerpTo);
-    test('testDeterminant', testDeterminant);
-    test('testIsInvertible', testIsInvertible);
-    test('testEquals', testEquals);
-    test('testToString', testToString);
+    test('testAffineTransformCopyConstructor', testAffineTransformCopyConstructor);
+    test('testAffineTransformIdentityConstructor', testAffineTransformIdentityConstructor);
+    test('testAffineTransformInverseConstructor', testAffineTransformInverseConstructor);
+    test('testAffineTransformRotationConstructor', testAffineTransformRotationConstructor);
+    test('testAffineTransformRotationAnchorConstructor', testAffineTransformRotationAnchorConstructor);
+    test('testAffineTransformScalingConstructor', testAffineTransformScalingConstructor);
+    test('testAffineTransformShearingConstructor', testAffineTransformShearingConstructor);
+    test('testAffineTransformTranslationConstructor', testAffineTransformTranslationConstructor);
+    test('testAffineTransformSetToIdentity', testAffineTransformSetToIdentity);
+    test('testAffineTransformScaleShearTranslateFactors', testAffineTransformScaleShearTranslateFactors);
+    test('testAffineTransformRotate', testAffineTransformRotate);
+    test('testAffineTransformRotateAnchor', testAffineTransformRotateAnchor);
+    test('testAffineTransformScale', testAffineTransformScale);
+    test('testAffineTransformShear', testAffineTransformShear);
+    test('testAffineTransformTranslate', testAffineTransformTranslate);
+    test('testAffineTransformConcatenate', testAffineTransformConcatenate);
+    test('testAffineTransformPreconcatenate', testAffineTransformPreconcatenate);
+    test('testAffineTransformAssociativeConcatenate', testAffineTransformAssociativeConcatenate);
+    test('testAffineTransformTransform', testAffineTransformTransform);
+    test('testAffineTransformLerpTo', testAffineTransformLerpTo);
+    test('testAffineTransformDeterminant', testAffineTransformDeterminant);
+    test('testAffineTransformIsInvertible', testAffineTransformIsInvertible);
+    test('testAffineTransformEquals', testAffineTransformEquals);
+    test('testAffineTransformToString', testAffineTransformToString);
   });
 }
 
-void testCopyConstructor() {
+void testAffineTransformCopyConstructor() {
   var from = new AffineTransform(1, 2, 3, 4, 5, 6);
   var to = new AffineTransform.copy(from);
   expect(from.m00, equals(to.m00));
@@ -40,7 +40,7 @@ void testCopyConstructor() {
   expect(identical(from, to), isFalse);
 }
 
-void testIdentityConstructor() {
+void testAffineTransformIdentityConstructor() {
   var tx = new AffineTransform.identity();
   expect(tx.m00, equals(1));  
   expect(tx.m10, equals(0));
@@ -50,7 +50,7 @@ void testIdentityConstructor() {
   expect(tx.m12, equals(0));
 }
 
-void testInverseConstructor() {
+void testAffineTransformInverseConstructor() {
   var tx = new AffineTransform.scaling(2, 3)
       ..translate(5, 10)..rotateAnchor(PI / 4, 5, 10);
   var iv = new AffineTransform.inverse(tx);
@@ -62,7 +62,7 @@ void testInverseConstructor() {
   expect(iv.m12, closeTo(2.928932188, tolerance));
 }
 
-void testRotationConstructor() {
+void testAffineTransformRotationConstructor() {
   var tx = new AffineTransform.rotation(PI / 2);  
   expect(tx.m00, closeTo(0, tolerance));
   expect(tx.m10, closeTo(1, tolerance));
@@ -72,7 +72,7 @@ void testRotationConstructor() {
   expect(tx.m12, closeTo(0, tolerance));
 }
 
-void testRotationAnchorConstructor() {
+void testAffineTransformRotationAnchorConstructor() {
   var tx = new AffineTransform.rotationAnchor(PI / 2, 1, 2);  
   expect(tx.m00, closeTo(0, tolerance));
   expect(tx.m10, closeTo(1, tolerance));
@@ -82,7 +82,7 @@ void testRotationAnchorConstructor() {
   expect(tx.m12, closeTo(1, tolerance));
 }
 
-void testScalingConstructor() {
+void testAffineTransformScalingConstructor() {
   var tx = new AffineTransform.scaling(2, 4);
   expect(tx.m00, equals(2));
   expect(tx.m10, equals(0));
@@ -92,7 +92,7 @@ void testScalingConstructor() {
   expect(tx.m12, equals(0));
 }
 
-void testShearingConstructor() {
+void testAffineTransformShearingConstructor() {
   var tx = new AffineTransform.shearing(2, 4);
   expect(tx.m00, equals(1));
   expect(tx.m10, equals(4));
@@ -102,7 +102,7 @@ void testShearingConstructor() {
   expect(tx.m12, equals(0));
 }
 
-void testTranslationConstructor() {
+void testAffineTransformTranslationConstructor() {
   var tx = new AffineTransform.translation(2, 4);
   expect(tx.m00, equals(1));
   expect(tx.m10, equals(0));
@@ -112,7 +112,7 @@ void testTranslationConstructor() {
   expect(tx.m12, equals(4));
 }
 
-void testSetToIdentity() {
+void testAffineTransformSetToIdentity() {
   var tx = new AffineTransform(1, 2, 3, 4, 5, 6);
   expect(tx.m00, equals(1));
   expect(tx.m10, equals(2));
@@ -131,7 +131,7 @@ void testSetToIdentity() {
   expect(tx.isIdentity, isTrue);
 }
 
-void testScaleShearTranslateFactors() {
+void testAffineTransformScaleShearTranslateFactors() {
   var tx = new AffineTransform(1, 2, 3, 4, 5, 6);
   expect(tx.scaleX, equals(1));
   expect(tx.scaleY, equals(4));
@@ -141,7 +141,7 @@ void testScaleShearTranslateFactors() {
   expect(tx.translateY, equals(6));
 }
 
-void testRotate() {
+void testAffineTransformRotate() {
   var tx = new AffineTransform(1, 2, 3, 4, 5, 6)..rotate(PI / 2);
   expect(tx.m00, closeTo(3, tolerance));
   expect(tx.m10, closeTo(4, tolerance));
@@ -151,7 +151,7 @@ void testRotate() {
   expect(tx.m12, closeTo(6, tolerance));
 }
 
-void testRotateAnchor() {
+void testAffineTransformRotateAnchor() {
   var tx = new AffineTransform(1, 2, 3, 4, 5, 6)
       ..rotateAnchor(PI / 2, 1, 1);
   expect(tx.m00, closeTo(3, tolerance));
@@ -162,7 +162,7 @@ void testRotateAnchor() {
   expect(tx.m12, closeTo(10, tolerance));
 }
 
-void testScale() {
+void testAffineTransformScale() {
   var tx = new AffineTransform(1, 2, 3, 4, 5, 6)..scale(2, 3);
   expect(tx.m00, equals(2));
   expect(tx.m10, equals(4));
@@ -172,7 +172,7 @@ void testScale() {
   expect(tx.m12, equals(6));
 }
 
-void testShear() {
+void testAffineTransformShear() {
   var tx = new AffineTransform(1, 2, 3, 4, 5, 6)..shear(2, 3);
   expect(tx.m00, equals(10));
   expect(tx.m10, equals(14));
@@ -182,7 +182,7 @@ void testShear() {
   expect(tx.m12, equals(6));
 }
 
-void testTranslate() {
+void testAffineTransformTranslate() {
   var tx = new AffineTransform(1, 2, 3, 4, 5, 6)..translate(2, 3);
   expect(tx.m00, equals(1));
   expect(tx.m10, equals(2));
@@ -197,7 +197,7 @@ void testTranslate() {
  *  | 2 4 6 | x | 1 5 3 | = | 8 32 26 |
  *  | 0 0 1 |   | 0 0 1 |   | 0 0  1  |
  */
-void testConcatenate() {
+void testAffineTransformConcatenate() {
   var tx = new AffineTransform(1, 2, 3, 4, 5, 6)
       ..concatenate(new AffineTransform(2, 1, 6, 5, 4, 3));
   expect(tx.m00, equals(5));
@@ -213,7 +213,7 @@ void testConcatenate() {
  *  | 1 5 3 | x | 2 4 6 | = | 11 23 38 |
  *  | 0 0 1 |   | 0 0 1 |   | 0  0  1  |
  */
-void testPreconcatenate() {
+void testAffineTransformPreconcatenate() {
   var tx = new AffineTransform(1, 2, 3, 4, 5, 6)
       ..preconcatenate(new AffineTransform(2, 1, 6, 5, 4, 3));
   expect(tx.m00, equals(14));
@@ -224,7 +224,7 @@ void testPreconcatenate() {
   expect(tx.m12, equals(38));
 }
 
-void testAssociativeConcatenate() {
+void testAffineTransformAssociativeConcatenate() {
   var a = new AffineTransform(2, 3, 5, 7, 11, 13)
     ..concatenate(new AffineTransform(17, 19, 23, 29, 31, 37));
   var b = new AffineTransform(17, 19, 23, 29, 31, 37)
@@ -237,7 +237,7 @@ void testAssociativeConcatenate() {
   expect(a.m12, equals(b.m12));
 }
 
-void testTransform() {
+void testAffineTransformTransform() {
   var srcPts = [0, 0, 1, 0, 1, 1, 0, 1];
   var dstPts = new List(8);
   AffineTransform tx = new AffineTransform.scaling(2, 3)
@@ -253,7 +253,7 @@ void testTransform() {
   expect(dstPts[7], closeTo(30.301515190, tolerance));
 }
 
-void testLerpTo() {
+void testAffineTransformLerpTo() {
   var a = new AffineTransform(1, 2, 3, 4, 5, 6);
   var b = new AffineTransform(2, 1, 6, 5, 4, 3);
   var result = new AffineTransform.identity();
@@ -280,13 +280,13 @@ void testLerpTo() {
   expect(result.m12, equals(4.5));
 }
 
-void testDeterminant() {
+void testAffineTransformDeterminant() {
   var tx = new AffineTransform.scaling(2, 3)
       ..translate(5, 10)..rotateAnchor(PI / 4, 5, 10);
   expect(tx.determinant, equals(6));
 }
 
-void testIsInvertible() {
+void testAffineTransformIsInvertible() {
   expect(new AffineTransform(2, 3, 4, 5, 6, 7).isInvertible, isTrue);
   expect(new AffineTransform(1, 0, 0, 1, 0, 0).isInvertible, isTrue);  
   expect(new AffineTransform(double.NAN, 0, 0, 1, 0, 0).isInvertible, isFalse);
@@ -310,7 +310,7 @@ void testIsInvertible() {
   expect(new AffineTransform(0, 0, 0, 0, 1, 0).isInvertible, isFalse);
 }
 
-void testEquals() {  
+void testAffineTransformEquals() {  
   var x = new AffineTransform(1, 2, 3, 4, 5, 6);
   var y = new AffineTransform(1, 2, 3, 4, 5, 6);
   var z = new AffineTransform(1, 2, 3, 4, 5, 6);
@@ -344,7 +344,7 @@ void testEquals() {
   expect(w.hashCode(), isNot(equals(x.hashCode())));
 }
 
-void testToString() {
+void testAffineTransformToString() {
   var tx = new AffineTransform(1, 2.0, 3, 4.0, 5, 6.0);
   expect(tx.toString(), equals("transform(1,2.0,3,4.0,5,6.0)"));
 }
