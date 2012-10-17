@@ -1,4 +1,6 @@
 
+library rectangle;
+
 /**
  * A representation of a [Rectangle].
  * 

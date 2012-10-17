@@ -1,4 +1,8 @@
 
+library affine_transform;
+
+import 'dart:math';
+
 /**
  * A representation of an affine transform.  An affine transform performs a 
  * linear mapping from 2D coordinates to other 2D coordinates that preserves

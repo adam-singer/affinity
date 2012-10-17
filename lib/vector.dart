@@ -1,4 +1,8 @@
 
+library vector;
+
+import 'dart:math';
+
 /**
  * Represents a vector with 2 components.
  */

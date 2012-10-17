@@ -3,6 +3,11 @@ library affinity;
 
 import 'dart:math';
 
-part 'src/affine_transform.dart';
-part 'src/rectangle.dart';
-part 'src/vector.dart';
+import 'affine_transform.dart';
+export 'affine_transform.dart';
+
+import 'rectangle.dart';
+export 'rectangle.dart';
+
+import 'vector.dart';
+export 'vector.dart';
