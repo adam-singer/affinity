@@ -3,4 +3,9 @@ description: a set of geometric primitives for dart
 author: Ross Smith
 homepage: https://github.com/rmsmith/affinity
 dependencies:
-  unittest: { sdk: unittest }
+  bench:
+    git: https://github.com/rmsmith/bench.git  
+  logging:
+    sdk: logging
+  unittest:
+    sdk: unittest
