@@ -52,9 +52,9 @@ class AffineTransform {
    */
   bool get isInvertible {
     final det = determinant;
-    return !det.isInfinite() && !det.isNaN() && det != 0
-        && !m02.isInfinite() && !m02.isNaN() 
-        && !m12.isInfinite() && !m12.isNaN();
+    return !det.isInfinite && !det.isNaN && det != 0
+        && !m02.isInfinite && !m02.isNaN 
+        && !m12.isInfinite && !m12.isNaN;
   }
   
   /// Gets or sets the scale factor in the x-direction (m00).
@@ -144,8 +144,8 @@ class AffineTransform {
         && m10 == other.m10 && m11 == other.m11 && m12 == other.m12;
   }
   
-  int hashCode() => m00.hashCode() ^ m01.hashCode() ^ m02.hashCode()
-      ^ m10.hashCode() ^ m11.hashCode() ^ m12.hashCode();
+  int get hashCode => m00.hashCode ^ m01.hashCode ^ m02.hashCode
+      ^ m10.hashCode ^ m11.hashCode ^ m12.hashCode;
   
   /**
    * Concatenates the given [other] [AffineTransform] to this [AffineTransform].

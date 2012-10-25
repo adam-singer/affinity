@@ -97,8 +97,8 @@ class Rectangle {
         && width == other.width && height == other.height;
   }
   
-  int hashCode() => left.hashCode() ^ top.hashCode() 
-      ^ width.hashCode() ^ height.hashCode();
+  int get hashCode => left.hashCode ^ top.hashCode
+      ^ width.hashCode ^ height.hashCode;
   
   /**
    * Returns [:true:] if the given [other] [Rectangle] is entirely contained

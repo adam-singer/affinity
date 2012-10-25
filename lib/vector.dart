@@ -51,7 +51,7 @@ class Vector2 {
     return x == other.x && y == other.y;
   }
   
-  int hashCode() => x.hashCode() ^ y.hashCode();
+  int get hashCode => x.hashCode ^ y.hashCode;
   
   /// Adds in place the given [other] vector to [this] vector.
   void add(Vector2 other) => addTo(other, this);
