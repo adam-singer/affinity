@@ -10,5 +10,5 @@ part 'affine_transform_bench.dart';
 
 void main() {
   Logger.root.on.record.add((record) => print('${record.message}'));
-  new Benchmarker().run(iterations:1000);
+  new Benchmarker().run(iterations:100);
 }
