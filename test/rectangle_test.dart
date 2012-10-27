@@ -116,7 +116,7 @@ void testRectanglesIntersectToEmpty() {
   var r2 = new Rectangle(20.12345, 0.0, 10.0, 10.0);
   var result = new Rectangle.empty();
   expect(r1.intersectTo(r2, result), isFalse);
-  expect(result.isEmpty);
+  expect(result.isEmpty, isTrue);
 }
 
 void testRectanglesIntersectTo() {
@@ -187,11 +187,11 @@ void testRectangleInflate() {
 
 void testRectangleIsEmpty() {
   var r = new Rectangle(1, 2, 0, 0);
-  expect(r.isEmpty);
+  expect(r.isEmpty, isTrue);
   r.width = 2;
   expect(r.isEmpty, isFalse);
   r.width = 0;
-  expect(r.isEmpty);
+  expect(r.isEmpty, isTrue);
   r.height = 0.001;
   expect(r.isEmpty, isFalse);
 }
