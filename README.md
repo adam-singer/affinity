@@ -1,4 +1,4 @@
-affinity
+Affinity
 ========
 
 A set of geometric primitives for [dart](http://www.dartlang.org/).
