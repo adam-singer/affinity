@@ -1,4 +1,6 @@
 
+part of affinity_bench;
+
 Benchmark affineTransformConcatenate() {
   var tx = new AffineTransform(1, 2, 3, 4, 5, 6);  
   var other = new AffineTransform(2, 1, 6, 5, 4, 3);

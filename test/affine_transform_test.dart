@@ -1,4 +1,6 @@
 
+part of affinity_test;
+
 void testAffineTransform() {  
   group('testAffineTransform', () {      
     test('testAffineTransformCopyConstructor', testAffineTransformCopyConstructor);

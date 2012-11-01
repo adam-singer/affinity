@@ -1,4 +1,6 @@
 
+part of affinity_test;
+
 void testVector2() {  
   group('testVector2', () {     
     test('testVector2CopyConstructor', testVector2CopyConstructor);

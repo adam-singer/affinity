@@ -1,4 +1,6 @@
 
+part of affinity_test;
+
 void testRectangle() {  
   group('testRectangle', () {    
     test('testRectangleCopyConstructor', testRectangleCopyConstructor); 
