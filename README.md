@@ -18,6 +18,7 @@ own such classes.  Thus, i've written Affinity with the following goals:
 - 100% unit test coverage.
 - Micro benchmarks ensure performance improves rather than degrades over time.
 - Only constructors (including factory constructors) may allocate memory.
+- Focus on *useful* constructs, in particular those for 2D graphics.
 
 I plan to take a conservative approach to the amount of classes and functions
 in this library; i.e. it shall not be a dumping ground for any sort of geometric
