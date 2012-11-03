@@ -16,7 +16,7 @@ more difficult to interoperate with other libraries who have also rolled their
 own such classes.  Thus, i've written Affinity with the following goals:
 
 - 100% unit test coverage.
-- Micro benchmarks ensure performace improves rather than degrades over time.
+- Micro benchmarks ensure performance improves rather than degrades over time.
 - Only constructors (including factory constructors) may allocate memory.
 
 I plan to take a conservative approach to the amount of classes and functions
